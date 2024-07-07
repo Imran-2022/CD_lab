@@ -14,14 +14,36 @@ using namespace std;
 #define imr_an ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 
 void solve(){
-    
+    string input="input.txt";
+    string output="abc.txt";
+    ifstream inputFile(input);
+    ofstream outputFile(output);
+    if(!inputFile || !outputFile){
+        cout<<"file missing"<<endl;
+        return;
+    }
+
+    char ch;
+    int deletionCount=0;
+
+    while(inputFile.get(ch)){
+        if (ch == '\t' || ch == '\n' || ch == ' ')deletionCount++;
+        else outputFile << ch; 
+    }
+   
+    inputFile.close();
+    outputFile.close();
+
+    cout << "Tabs, newlines, and spaces removed successfully." << endl;
+    cout << "Number of deletions: " << deletionCount << endl;
+
 }
 
 int main()
 {
     imr_an
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--)solve();
     return 0;
 }

@@ -14,14 +14,14 @@ using namespace std;
 #define imr_an ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 
 void solve(){
-    
+    // will do later !! 
 }
 
 int main()
 {
     imr_an
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--)solve();
     return 0;
 }

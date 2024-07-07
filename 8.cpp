@@ -14,14 +14,24 @@ using namespace std;
 #define imr_an ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 
 void solve(){
-    
+    ifstream file("input.txt");
+    if (!file) {
+        cout << "Unable to open file"<< endl;
+        return;
+    }
+    string s;
+    char ch;
+    int charCount = 0;
+    while(getline(file,s))fl(i,0,s.size())if(s[i]!=' ')charCount++;
+    file.close();
+    cout<<charCount<<endl;
 }
 
 int main()
 {
     imr_an
     int t=1;
-    cin>>t;
+    // cin>>t;
     while(t--)solve();
     return 0;
 }
