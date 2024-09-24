@@ -4,24 +4,55 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define fl(i, a, n) for (int i = a; i < n; i++)
-#define pb push_back
-#define all(p) p.begin(), p.end()
-#define rall(v) v.rbegin(), v.rend()
-#define vi vector<int>
-#define vvi vector<vi>
-#define imr_an ios_base::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 
-void solve(){
-    // will do later !! 
+int del;
+bool m_cmt=false;
+
+string rem_cmt(string str){
+    int n=str.length();
+    string res="";
+    bool s_cmt=false;
+    for(int i=0;i<n;i++){
+        if(str[i]=='/' && str[i+1]=='/'){
+            s_cmt=true;
+            m_cmt=false;
+            del++;
+            break;
+        }
+        else if(str[i]=='/' && str[i+1]=='*'){
+            s_cmt=false;
+            m_cmt=true;
+            i++;
+            del++;
+        }
+        else if(str[i]=='*' && str[i+1]=='/'){
+            m_cmt=false;
+            s_cmt=false;
+            i++;
+        }else if(s_cmt==false && m_cmt==false){
+            res+=str[i];
+        }
+    }
+
+    return res;
 }
 
 int main()
 {
-    imr_an
-    int t=1;
-    // cin>>t;
-    while(t--)solve();
+    fstream fin,fout;
+    fin.open("input.txt");
+    fout.open("output.txt");
+    string str;
+
+    while(getline(fin,str)){
+        // cout<<str<<endl;
+      string ss= rem_cmt(str);
+      fout<<ss<<endl;
+    }
+    cout<<"Number of deletion : "<<del<<endl;
+
+
+    fin.close();
+    fout.close();
     return 0;
 }
